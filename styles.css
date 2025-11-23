@@ -14,34 +14,180 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: #f5f5f5;
+  background: #fff;
   color: var(--gray-800);
 }
 
-.top-bar {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  align-items: center;
-  padding: 20px 32px 12px;
-  gap: 16px;
+#wrapper {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 30px;
+  box-sizing: border-box; 
 }
 
-.brand {
+/* HEADER */
+
+.main-nav {
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+}
+
+.left-nav {
+  display: flex;
+  gap: 30px; 
+}
+
+.right-nav {
+  margin-left: auto;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+#logo img { width: 150px; }
+
+.links {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 25px;
+}
+
+.links a {
+  color: var(--gray-800);
+  text-decoration: none; 
+}
+
+/* BODY */
+
+.gameplay {
+  width: 100%;
+  margin-top: 50px;
+}
+
+.gameboard {
+  flex: 1;
+  min-width: 0;
+  background-color: var(--gray-100);
+  border-radius: 5px;
+  padding: 15px;
+}
+
+
+#player-area {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.my-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  border: 1px solid var(--gray-200);
+  padding: 12px 14px;
+}
+
+.progress .item {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.progress .label {
   font-weight: 700;
 }
 
-.logo {
-  height: 32px;
-  width: 32px;
-  border: 2px solid var(--gray-800);
-  border-radius: 8px;
-  display: grid;
-  place-items: center;
-  font-weight: 800;
+.progress .meta {
+  font-size: 13px;
+  color: var(--gray-600);
 }
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn {
+  background: #fff;
+  color: var(--gray-800);
+  border: 1px solid var(--gray-800);
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: transform 0.1s ease;
+}
+
+.btn:hover {
+  background-color: var(--gray-200);
+}
+
+.btn.secondary {
+  background: #ededed;
+  color: var(--gray-800);
+  border: 1px solid var(--gray-200);
+}
+
+.btn.wide {
+  width: 100%;
+  text-align: left;
+}
+
+
+.vp-value {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 8px 0 12px;
+}
+
+.pill {
+  font-size: 0.8rem; 
+  background-color: var(--gray-200);
+  padding: 5px 12px;
+  border-radius: 5px;
+}
+
+.player-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.player-list li {
+  padding: 6px 8px;
+}
+
+.player-list .pill {
+  margin-left: 15px;
+}
+
+footer {
+  background-image: url("src/img/catan-footer.png");
+  background-size: 100% auto;      /* makes it stretch and fill the width */
+  background-position: top; /* keeps subject centered when cropping */
+  background-repeat: no-repeat;
+  height: 200px;
+  opacity: .05; 
+}
+
+
+
+
+
+
+
+/* OLD STUFF */
 
 .nav-links {
   display: flex;
@@ -79,38 +225,6 @@ body {
   font-size: 10px;
 }
 
-.btn {
-  background: var(--gray-800);
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 10px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.1s ease;
-}
-
-.btn:hover {
-  transform: translateY(-1px);
-}
-
-.btn.secondary {
-  background: #ededed;
-  color: var(--gray-800);
-  border: 1px solid var(--gray-200);
-}
-
-.btn.wide {
-  width: 100%;
-  text-align: left;
-}
-
-.layout {
-  display: grid;
-  grid-template-columns: 260px 1fr 300px;
-  gap: 32px;
-  padding: 12px 32px 32px;
-}
 
 .sidebar {
   display: flex;
@@ -124,26 +238,9 @@ body {
   font-weight: 700;
 }
 
-.vp-value {
-  font-size: 32px;
-  font-weight: 700;
-  margin: 8px 0 12px;
-}
 
-.player-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
 
-.player-list li {
-  padding: 6px 8px;
-  border-radius: 10px;
-  background: var(--gray-100);
-}
+
 
 .cards h3 {
   margin: 0;
@@ -182,7 +279,7 @@ body {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 18px;
-  transform: rotate(-20deg);
+  /* transform: rotate(-20deg); */
   width: min(70vw, 720px);
   max-width: 760px;
 }
@@ -229,36 +326,8 @@ select {
   gap: 10px;
 }
 
-.progress {
-  display: grid;
-  gap: 12px;
-}
 
-.progress .item {
-  background: white;
-  border: 1px solid var(--gray-200);
-  border-radius: 12px;
-  padding: 12px 14px;
-  display: grid;
-  grid-template-columns: auto auto;
-  row-gap: 6px;
-  column-gap: 12px;
-  align-items: center;
-}
 
-.progress .label {
-  font-weight: 700;
-}
-
-.progress .value {
-  justify-self: end;
-  font-weight: 700;
-}
-
-.progress .meta {
-  font-size: 13px;
-  color: var(--gray-600);
-}
 
 @media (max-width: 1100px) {
   .layout {

@@ -10,54 +10,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="top-bar">
-    <div class="brand">
-      <div class="logo">C</div>
-      <span class="brand-name">Catan</span>
-    </div>
-    <nav class="nav-links">
-      <a href="#">Score</a>
-      <a href="#">How to play</a>
-    </nav>
-    <div class="dice-area">
-      <div class="dice">
-        <span class="pips">⭘</span>
-        <span class="pips">⭘</span>
-      </div>
-      <button class="btn">Roll</button>
-    </div>
-  </header>
-
-  <main class="layout">
-    <section class="sidebar left">
-      <div class="section">
-        <h2>VP</h2>
-        <div class="vp-value">12</div>
-        <ul class="player-list">
-          <li>You</li>
-          <li>Player 1</li>
-          <li>Player 2</li>
-          <li>Player 3</li>
-        </ul>
-      </div>
-
-      <div class="section cards">
-        <h3>Iron x3</h3>
-        <h3>Sheep x3</h3>
-        <h3>Wood x1</h3>
-        <h3>Brick x1</h3>
-        <h3>Wheat x0</h3>
-        <div class="card-stack">
-          <div class="card"></div>
-          <div class="card"></div>
-          <div class="card"></div>
-          <div class="card"></div>
-          <div class="card"></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="board">
+<div id="wrapper">
+<header class="main-nav">
+  <div class="left-nav">
+  <div id="logo"><a href="/"><img src="/src/img/catan-full-logo.png"></a></div>
+  <nav class="links">
+    <a href="#">About</a>
+    <a href="#">How to play</a>
+  </nav>
+  </div>
+  <div class="right-nav">
+    <span class="pips">⭘</span>
+    <span class="pips">⭘</span>
+    <button class="btn">Roll</button>    
+  </div>
+</header>
+<main class="gameplay">
+  <div id="board">
+    <div class="gameboard">
       <div class="board-grid">
         <div class="tile"></div>
         <div class="tile"></div>
@@ -80,38 +50,28 @@
         <div class="tile"></div>
         <div class="tile"></div>
       </div>
-    </section>
-
-    <section class="sidebar right">
-      <div class="controls">
-        <div class="control-group">
-          <label for="resources">Resources:</label>
-          <select id="resources">
-            <option>Iron</option>
-            <option>Wood</option>
-            <option>Brick</option>
-            <option>Wheat</option>
-            <option>Sheep</option>
-          </select>
+    </div>
+  </div>
+  <div id="player-area">
+    <div class="my-cards">
+      <h2>My cards</h2>
+        <div class="card-stack">
+          <div class="card"></div>
+          <div class="card"></div>
+          <div class="card"></div>
+          <div class="card"></div>
+          <div class="card"></div>
         </div>
-        <div class="control-group">
-          <label for="amount">Amount:</label>
-          <select id="amount">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-          </select>
+        <div class="card-count">
+          <h3>Iron x3</h3>
+          <h3>Sheep x3</h3>
+          <h3>Wood x1</h3>
+          <h3>Brick x1</h3>
+          <h3>Wheat x0</h3>
         </div>
-        <button class="btn secondary">Trade</button>
-      </div>
-
-      <div class="button-stack">
-        <button class="btn wide">Build / Buy</button>
-        <button class="btn wide">Play Action Card</button>
-        <button class="btn wide">Trade</button>
-      </div>
-
+    </div>
+    <div class="build-and-buy">
+      <h2>Buildable</h2>
       <div class="progress">
         <div class="item">
           <span class="label">Roads</span>
@@ -138,7 +98,26 @@
           <span class="value">x3</span>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+    <div class="action-buttons">
+      <h2>Actions</h2>
+        <button class="btn wide">Build / Buy</button>
+        <button class="btn wide">Play Action Card</button>
+        <button class="btn wide">Trade</button>
+    </div>
+    <div class="scoreboard">
+      <h2>Points</h2>
+      <div class="vp-value">12 <span class="pill">You</span></div>
+      <ul class="player-list">
+        <li>8<span class="pill">Player 1</span></li>
+        <li>3<span class="pill">Player 2</span></li>
+        <li>2<span class="pill">Player 3</span></li>
+      </ul>      
+    </div>
+  </div>
+</main>
+<footer>
+</footer>
+</div>
 </body>
 </html>
