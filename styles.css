@@ -16,6 +16,7 @@ body {
   min-height: 100vh;
   background: #fff;
   color: var(--gray-800);
+  padding-bottom: 110px;
 }
 
 #wrapper {
@@ -76,23 +77,75 @@ body {
 
 #player-area {
   display: flex;
-  flex-direction: row;
-  gap: 30px;
+  flex-wrap: wrap;
+  gap: 24px;
   margin-top: 50px;
 }
 
-.my-cards {
+.window {
+  background: #c0c0c0;
+  border: 2px solid #000;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.25);
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-width: 0;
+  flex: 0 0 300px;
+  width: 300px;
+  max-width: 300px;
+  position: relative;
+  overflow: hidden;
+}
+
+.window-titlebar {
   display: flex;
-  flex-direction: column;
-  gap: 30px;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(180deg, #0f4fa8 0%, #062e6f 100%);
+  color: white;
+  padding: 6px 10px;
+  border-bottom: 2px solid #000;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.window-control {
+  background: #c0c0c0;
+  border: 2px solid #000;
+  width: 24px;
+  height: 24px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: inset -2px -2px 0 #7a7a7a, inset 2px 2px 0 #fff;
+  display: grid;
+  place-items: center;
+}
+
+.window-control:active {
+  box-shadow: inset 2px 2px 0 #7a7a7a, inset -2px -2px 0 #fff;
+}
+
+.window-content {
+  background: #e5e5e5;
+  border-top: 2px solid #7a7a7a;
+  padding: 16px;
+  display: grid;
+  gap: 20px;
+}
+
+.window.is-minimized {
+  display: none;
 }
 
 .progress {
   display: flex;
   flex-direction: column;
   gap: 30px;
-  border: 1px solid var(--gray-200);
+  border: 2px solid #000;
   padding: 12px 14px;
+  background: #fff;
+  box-shadow: inset -2px -2px 0 #7a7a7a, inset 2px 2px 0 #fff;
 }
 
 .progress .item {
@@ -117,13 +170,13 @@ body {
 }
 
 .btn {
-  background: #fff;
+  background: #dcdcdc;
   color: var(--gray-800);
-  border: 1px solid var(--gray-800);
+  border: 2px solid #000;
   padding: 10px 16px;
   cursor: pointer;
-  font-size: 1.1rem;
-  transition: transform 0.1s ease;
+  font-size: 1.05rem;
+  box-shadow: inset -2px -2px 0 #7a7a7a, inset 2px 2px 0 #fff;
 }
 
 .btn:hover {
@@ -178,7 +231,36 @@ footer {
   background-position: top; /* keeps subject centered when cropping */
   background-repeat: no-repeat;
   height: 200px;
-  opacity: .05; 
+  opacity: .05;
+}
+
+#taskbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 60px;
+  background: #c0c0c0;
+  border-top: 2px solid #fff;
+  box-shadow: inset 0 2px 0 #7a7a7a, 0 -2px 0 rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 14px;
+  z-index: 20;
+}
+
+.taskbar-item {
+  background: #dcdcdc;
+  border: 2px solid #000;
+  padding: 8px 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: inset -2px -2px 0 #7a7a7a, inset 2px 2px 0 #fff;
+}
+
+.taskbar-item:active {
+  box-shadow: inset 2px 2px 0 #7a7a7a, inset -2px -2px 0 #fff;
 }
 
 
