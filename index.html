@@ -11,18 +11,60 @@
 </head>
 <body>
 <div id="wrapper">
-<header class="main-nav">
+<header id="top-rows">
+  <div class="main-nav">
   <div class="left-nav">
-  <div id="logo"><a href="/"><img src="/src/img/catan-full-logo.png"></a></div>
-  <nav class="links">
-    <a href="#">About</a>
-    <a href="#">How to play</a>
-  </nav>
+    <div id="logo"><a href="/"><img src="/src/img/catan-full-logo.png"></a></div>
+      <nav class="links">
+        <a href="#">About</a>
+        <a href="#">How to play</a>
+      </nav>
   </div>
   <div class="right-nav">
-    <span class="pips">⭘</span>
-    <span class="pips">⭘</span>
-    <button class="btn">Roll</button>    
+    <div class="players">
+      <div class="player p1">
+        <div class="player-turn-indicator">
+          You're up
+        </div>
+        <div class="player-details">
+          Player 1 
+          <span class="player-points">22</span>>
+        </div>
+      </div>
+      <div class="player p2">
+        <div class="player-turn-indicator">
+          You're up
+        </div>
+        <div class="player-details">
+          Player 2
+          <span class="player-points">22</span>>
+        </div>
+      </div>
+      <div class="player p3">
+        <div class="player-turn-indicator">
+          You're up
+        </div>
+        <div class="player-details">
+          Player 3
+          <span class="player-points">22</span>>
+        </div>
+      </div>
+      <div class="player you">
+        <div class="player-turn-indicator">
+          You're up
+        </div>
+        <div class="player-details">
+          You 
+          <span class="player-points">22</span>>
+        </div>
+      </div>
+    </div>
+    <div class="action-buttons">
+      <button class="btn wide">Build / Buy</button>
+      <button class="btn wide">Play Action Card</button>
+      <button class="btn wide">Trade</button>
+    </div>
+  </div>
   </div>
 </header>
 <main class="gameplay">
@@ -37,89 +79,102 @@
         <button class="window-control minimize" aria-label="Minimize My cards">_</button>
       </header>
       <div class="window-content">
-        <div class="card-stack">
-          <div class="card"></div>
-          <div class="card"></div>
-          <div class="card"></div>
-          <div class="card"></div>
-          <div class="card"></div>
-        </div>
         <div class="card-count">
-          <h3>Iron x3</h3>
-          <h3>Sheep x3</h3>
-          <h3>Wood x1</h3>
-          <h3>Brick x1</h3>
-          <h3>Wheat x0</h3>
+          <div class="card-stack">
+            <span class="card-icon">Bk</span>
+            <span class="count">x3</span>
+          </div>
+          <div class="card-stack">
+            <span class="card-icon">Wd</span>
+            <span class="count">x3</span>
+          </div>
+          <div class="card-stack">
+            <span class="card-icon">Wh</span>
+            <span class="count">x3</span>
+          </div>
+          <div class="card-stack">
+            <span class="card-icon">Sh</span>
+            <span class="count">x3</span>
+          </div>
+          <div class="card-stack">
+            <span class="card-icon">Or</span>
+            <span class="count">x3</span>
+          </div>  
+          <div class="card-stack">
+            <span class="card-icon">Ac</span>
+            <span class="count">x3</span>
+          </div>                                                  
         </div>
       </div>
     </section>
-    <section class="window" id="window-build" data-title="Buildable">
+    <section class="window" id="window-build" data-title="Building Costs">
       <header class="window-titlebar">
-        <span class="window-title">Buildable</span>
-        <button class="window-control minimize" aria-label="Minimize Buildable">_</button>
+        <span class="window-title">Building Costs</span>
+        <button class="window-control minimize" aria-label="Minimize Building Costs">_</button>
       </header>
       <div class="window-content">
         <div class="progress">
           <div class="item">
-            <span class="label">Roads</span>
-            <span class="value">x3</span>
-            <span class="meta">1 Wood</span>
-            <span class="meta">1 Brick</span>
+            <div class="label">
+              Roads             
+              <span class="value">(4 remain)</span>
+            </div>
+            <div class="how-to-build">
+              <span class="meta">1 Brick</span>
+              <span class="meta">1 Wood</span>
+            </div>
           </div>
           <div class="item">
-            <span class="label">Villages</span>
-            <span class="value">x2/5</span>
-            <span class="meta">1 Wood</span>
-            <span class="meta">1 Wheat</span>
-            <span class="meta">1 Brick</span>
-            <span class="meta">1 Sheep</span>
+            <div class="label">
+              Settlement             
+              <span class="value">(4 remain)</span>
+            </div>
+            <div class="how-to-build">
+              <span class="meta">1 Brick</span>
+              <span class="meta">1 Wood</span>
+              <span class="meta">1 Wheat</span>
+              <span class="meta">1 Sheep</span>
+            </div>
           </div>
           <div class="item">
-            <span class="label">Cities</span>
-            <span class="value">x4/4</span>
-            <span class="meta">2 Wheat</span>
-            <span class="meta">3 Rock</span>
+            <div class="label">
+              City             
+              <span class="value">x3</span>
+            </div>
+            <div class="how-to-build">
+              <span class="meta">2 Wheat</span>
+              <span class="meta">3 Ore</span>
+            </div>
           </div>
           <div class="item">
-            <span class="label">Action Cards</span>
-            <span class="value">x3</span>
-          </div>
+            <div class="label">
+              Action Card             
+              <span class="value">x3</span>
+            </div>
+            <div class="how-to-build">
+              <span class="meta">1 Sheep</span>
+              <span class="meta">1 Wheat</span>
+              <span class="meta">1 Ore</span>
+            </div>
+          </div>                    
         </div>
       </div>
     </section>
-    <section class="window" id="window-actions" data-title="Actions">
+
+    <section class="window" id="window-build" data-title="Dice">
       <header class="window-titlebar">
-        <span class="window-title">Actions</span>
-        <button class="window-control minimize" aria-label="Minimize Actions">_</button>
+        <span class="window-title">Dice roll</span>
+        <button class="window-control minimize" aria-label="Minimize Dice">_</button>
       </header>
       <div class="window-content">
-        <div class="action-buttons">
-          <button class="btn wide">Build / Buy</button>
-          <button class="btn wide">Play Action Card</button>
-          <button class="btn wide">Trade</button>
-        </div>
+        <span class="pips">⭘</span>
+        <span class="pips">⭘</span>
+        <button class="btn">Roll</button> 
       </div>
     </section>
-    <section class="window" id="window-score" data-title="Points">
-      <header class="window-titlebar">
-        <span class="window-title">Points</span>
-        <button class="window-control minimize" aria-label="Minimize Points">_</button>
-      </header>
-      <div class="window-content">
-        <div class="scoreboard">
-          <div class="vp-value">12 <span class="pill">You</span></div>
-          <ul class="player-list">
-            <li>8<span class="pill">Player 1</span></li>
-            <li>3<span class="pill">Player 2</span></li>
-            <li>2<span class="pill">Player 3</span></li>
-          </ul>
-        </div>
-      </div>
-    </section>
+
   </div>
 </main>
-<footer>
-</footer>
 </div>
 <div id="taskbar" aria-label="Minimized windows"></div>
 <script type="module">
@@ -153,5 +208,6 @@
     });
   });
 </script>
+<script src="main.js"></script>
 </body>
 </html>
