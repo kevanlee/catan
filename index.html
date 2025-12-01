@@ -161,7 +161,7 @@
       </div>
     </section>
 
-    <section class="window" id="window-build" data-title="Dice">
+    <section class="window" id="window-dice" data-title="Dice">
       <header class="window-titlebar">
         <span class="window-title">Dice roll</span>
         <button class="window-control minimize" aria-label="Minimize Dice">_</button>
@@ -180,12 +180,82 @@
 <script type="module">
   const windows = document.querySelectorAll('.window');
   const taskbar = document.getElementById('taskbar');
+  let zIndexCounter = 50;
+
+  function initializeFloatingWindow(win) {
+    const rect = win.getBoundingClientRect();
+
+    win.classList.add('floating-window');
+    win.style.left = `${rect.left}px`;
+    win.style.top = `${rect.top}px`;
+    win.style.width = `${rect.width}px`;
+    win.style.maxWidth = `${rect.width}px`;
+    win.style.minWidth = `${rect.width}px`;
+
+    bringToFront(win);
+  }
+
+  function bringToFront(win) {
+    win.style.zIndex = `${++zIndexCounter}`;
+  }
+
+  function makeDraggable(win) {
+    const titlebar = win.querySelector('.window-titlebar');
+    if (!titlebar) return;
+
+    let isDragging = false;
+    let startX = 0;
+    let startY = 0;
+    let originLeft = 0;
+    let originTop = 0;
+
+    const handlePointerMove = (event) => {
+      if (!isDragging) return;
+
+      const deltaX = event.clientX - startX;
+      const deltaY = event.clientY - startY;
+
+      win.style.left = `${originLeft + deltaX}px`;
+      win.style.top = `${originTop + deltaY}px`;
+    };
+
+    const handlePointerUp = (event) => {
+      if (!isDragging) return;
+      isDragging = false;
+      if (titlebar.hasPointerCapture && titlebar.hasPointerCapture(event.pointerId)) {
+        titlebar.releasePointerCapture(event.pointerId);
+      }
+      window.removeEventListener('pointermove', handlePointerMove);
+      window.removeEventListener('pointerup', handlePointerUp);
+    };
+
+    titlebar.addEventListener('pointerdown', (event) => {
+      if (event.button !== 0 || win.dataset.state === 'minimized') return;
+
+      isDragging = true;
+      bringToFront(win);
+      const rect = win.getBoundingClientRect();
+
+      startX = event.clientX;
+      startY = event.clientY;
+      originLeft = rect.left;
+      originTop = rect.top;
+
+      titlebar.setPointerCapture(event.pointerId);
+      window.addEventListener('pointermove', handlePointerMove);
+      window.addEventListener('pointerup', handlePointerUp);
+    });
+  }
 
   windows.forEach((win) => {
     const minimizeButton = win.querySelector('.window-control.minimize');
     const title = win.dataset.title || win.querySelector('.window-title')?.textContent?.trim() || 'Window';
 
     win.dataset.state = 'open';
+
+    initializeFloatingWindow(win);
+    makeDraggable(win);
+    win.addEventListener('mousedown', () => bringToFront(win));
 
     minimizeButton?.addEventListener('click', () => {
       if (win.dataset.state === 'minimized') return;
@@ -201,6 +271,7 @@
       restoreButton.addEventListener('click', () => {
         win.dataset.state = 'open';
         win.classList.remove('is-minimized');
+        bringToFront(win);
         restoreButton.remove();
       });
 
