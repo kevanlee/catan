@@ -14,7 +14,7 @@
 <header id="top-rows">
   <div class="main-nav">
   <div class="left-nav">
-    <div id="logo"><a href="/"><img src="/src/img/catan-full-logo.png"></a></div>
+    <div id="logo"><a href="/index-copy.html"><img src="/src/img/catan-full-logo.png"></a></div>
       <nav class="links">
         <a href="#">About</a>
         <a href="#">How to play</a>
@@ -68,217 +68,22 @@
   </div>
 </header>
 <main class="gameplay">
-  <div id="board-container">
-    <div id="board">
+  <div id="game-setup">
+    <div id="lets-go">
+            <a href="/index-copy.html"><button class="btn wide">Start new game</button></a>
     </div>
   </div>
-  <div id="player-area">
-    <section class="window" id="window-my-cards" data-title="My cards">
-      <header class="window-titlebar">
-        <span class="window-title">My cards</span>
-        <button class="window-control minimize" aria-label="Minimize My cards">_</button>
-      </header>
-      <div class="window-content">
-        <div class="card-count">
-          <div class="card-stack">
-            <span class="card-icon">Bk</span>
-            <span class="count">x3</span>
-          </div>
-          <div class="card-stack">
-            <span class="card-icon">Wd</span>
-            <span class="count">x3</span>
-          </div>
-          <div class="card-stack">
-            <span class="card-icon">Wh</span>
-            <span class="count">x3</span>
-          </div>
-          <div class="card-stack">
-            <span class="card-icon">Sh</span>
-            <span class="count">x3</span>
-          </div>
-          <div class="card-stack">
-            <span class="card-icon">Or</span>
-            <span class="count">x3</span>
-          </div>  
-          <div class="card-stack">
-            <span class="card-icon">Ac</span>
-            <span class="count">x3</span>
-          </div>                                                  
-        </div>
-      </div>
-    </section>
-    <section class="window" id="window-build" data-title="Building Costs">
-      <header class="window-titlebar">
-        <span class="window-title">Building Costs</span>
-        <button class="window-control minimize" aria-label="Minimize Building Costs">_</button>
-      </header>
-      <div class="window-content">
-        <div class="progress">
-          <div class="item">
-            <div class="label">
-              Roads             
-              <span class="value">(4 remain)</span>
-            </div>
-            <div class="how-to-build">
-              <span class="meta">1 Brick</span>
-              <span class="meta">1 Wood</span>
-            </div>
-          </div>
-          <div class="item">
-            <div class="label">
-              Settlement             
-              <span class="value">(4 remain)</span>
-            </div>
-            <div class="how-to-build">
-              <span class="meta">1 Brick</span>
-              <span class="meta">1 Wood</span>
-              <span class="meta">1 Wheat</span>
-              <span class="meta">1 Sheep</span>
-            </div>
-          </div>
-          <div class="item">
-            <div class="label">
-              City             
-              <span class="value">x3</span>
-            </div>
-            <div class="how-to-build">
-              <span class="meta">2 Wheat</span>
-              <span class="meta">3 Ore</span>
-            </div>
-          </div>
-          <div class="item">
-            <div class="label">
-              Action Card             
-              <span class="value">x3</span>
-            </div>
-            <div class="how-to-build">
-              <span class="meta">1 Sheep</span>
-              <span class="meta">1 Wheat</span>
-              <span class="meta">1 Ore</span>
-            </div>
-          </div>                    
-        </div>
-      </div>
-    </section>
-
-    <section class="window" id="window-dice" data-title="Dice">
-      <header class="window-titlebar">
-        <span class="window-title">Dice roll</span>
-        <button class="window-control minimize" aria-label="Minimize Dice">_</button>
-      </header>
-      <div class="window-content">
-        <span class="pips">⭘</span>
-        <span class="pips">⭘</span>
-        <button class="btn">Roll</button> 
-      </div>
-    </section>
-
-  </div>
+  <style type="text/css">
+    #game-setup {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 40vh;
+    }
+  </style>
 </main>
-</div>
-<div id="taskbar" aria-label="Minimized windows"></div>
-<script type="module">
-  const windows = document.querySelectorAll('.window');
-  const taskbar = document.getElementById('taskbar');
-  let zIndexCounter = 50;
 
-  function initializeFloatingWindow(win) {
-    const rect = win.getBoundingClientRect();
 
-    win.classList.add('floating-window');
-    win.style.left = `${rect.left}px`;
-    win.style.top = `${rect.top}px`;
-    win.style.width = `${rect.width}px`;
-    win.style.maxWidth = `${rect.width}px`;
-    win.style.minWidth = `${rect.width}px`;
-
-    bringToFront(win);
-  }
-
-  function bringToFront(win) {
-    win.style.zIndex = `${++zIndexCounter}`;
-  }
-
-  function makeDraggable(win) {
-    const titlebar = win.querySelector('.window-titlebar');
-    if (!titlebar) return;
-
-    let isDragging = false;
-    let startX = 0;
-    let startY = 0;
-    let originLeft = 0;
-    let originTop = 0;
-
-    const handlePointerMove = (event) => {
-      if (!isDragging) return;
-
-      const deltaX = event.clientX - startX;
-      const deltaY = event.clientY - startY;
-
-      win.style.left = `${originLeft + deltaX}px`;
-      win.style.top = `${originTop + deltaY}px`;
-    };
-
-    const handlePointerUp = (event) => {
-      if (!isDragging) return;
-      isDragging = false;
-      if (titlebar.hasPointerCapture && titlebar.hasPointerCapture(event.pointerId)) {
-        titlebar.releasePointerCapture(event.pointerId);
-      }
-      window.removeEventListener('pointermove', handlePointerMove);
-      window.removeEventListener('pointerup', handlePointerUp);
-    };
-
-    titlebar.addEventListener('pointerdown', (event) => {
-      if (event.button !== 0 || win.dataset.state === 'minimized') return;
-
-      isDragging = true;
-      bringToFront(win);
-      const rect = win.getBoundingClientRect();
-
-      startX = event.clientX;
-      startY = event.clientY;
-      originLeft = rect.left;
-      originTop = rect.top;
-
-      titlebar.setPointerCapture(event.pointerId);
-      window.addEventListener('pointermove', handlePointerMove);
-      window.addEventListener('pointerup', handlePointerUp);
-    });
-  }
-
-  windows.forEach((win) => {
-    const minimizeButton = win.querySelector('.window-control.minimize');
-    const title = win.dataset.title || win.querySelector('.window-title')?.textContent?.trim() || 'Window';
-
-    win.dataset.state = 'open';
-
-    initializeFloatingWindow(win);
-    makeDraggable(win);
-    win.addEventListener('mousedown', () => bringToFront(win));
-
-    minimizeButton?.addEventListener('click', () => {
-      if (win.dataset.state === 'minimized') return;
-
-      win.dataset.state = 'minimized';
-      win.classList.add('is-minimized');
-
-      const restoreButton = document.createElement('button');
-      restoreButton.className = 'taskbar-item';
-      restoreButton.textContent = title;
-      restoreButton.setAttribute('data-target', win.id);
-
-      restoreButton.addEventListener('click', () => {
-        win.dataset.state = 'open';
-        win.classList.remove('is-minimized');
-        bringToFront(win);
-        restoreButton.remove();
-      });
-
-      taskbar.appendChild(restoreButton);
-    });
-  });
-</script>
 <script src="main.js"></script>
 </body>
 </html>

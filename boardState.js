@@ -216,6 +216,34 @@ export function initBoardState() {
   linkVertices("v_0", "v_1");
 
   // Add your real hexes, roads, vertices here…
+  registerVertex("v_1", { row: 0, col: 10 }, ["hex_1"]);
+  registerVertex("v_2", { row: 0, col: 12 }, ["hex_1"]);
+  registerVertex("v_3", { row: 2, col: 6 }, ["hex_4"]);
+  registerVertex("v_4", { row: 2, col: 8 }, ["hex_1", "hex_4"]);
+  registerVertex("v_5", { row: 2, col: 14 }, ["hex_1"]);
+
+
+  const hexCells1 = [
+    { row: 1, col: 10 },
+    { row: 1, col: 11 },
+    { row: 1, col: 12 },
+    { row: 2, col: 9 },
+    { row: 2, col: 10 },
+    { row: 2, col: 11 },
+    { row: 2 , col: 12 },
+    { row: 2, col: 13 },
+    { row: 3, col: 10 },
+    { row: 3, col: 11 },
+    { row: 3, col: 12 }
+  ];
+
+  registerHex("hex_1", hexCells1, {
+    resource: null,   // fill in later: "wheat", "wood", etc.
+    dice: null,       // e.g. 6, 8, 3, etc.
+    robber: false,
+    vertices: ["v_1", "v_2", "v_3", "v_4", "v_5"] // fill in real ones
+  });
+
 } // <-- closes initBoardState()
 
 export { initBoardState };

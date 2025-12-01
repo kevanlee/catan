@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catan UI Mock</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="wrapper">
+<header id="top-rows">
+  <div class="main-nav">
+  <div class="left-nav">
+    <div id="logo"><a href="/index-copy.html"><img src="/src/img/catan-full-logo.png"></a></div>
+      <nav class="links">
+        <a href="#">About</a>
+        <a href="#">How to play</a>
+      </nav>
+  </div>
+  <div class="right-nav">
+    <div class="players">
+      <div class="player p1">
+        <div class="player-turn-indicator">
+          You're up
+        </div>
+        <div class="player-details">
+          Player 1 
+          <span class="player-points">22</span>>
+        </div>
+      </div>
+      <div class="player p2">
+        <div class="player-turn-indicator">
+          You're up
+        </div>
+        <div class="player-details">
+          Player 2
+          <span class="player-points">22</span>>
+        </div>
+      </div>
+      <div class="player p3">
+        <div class="player-turn-indicator">
+          You're up
+        </div>
+        <div class="player-details">
+          Player 3
+          <span class="player-points">22</span>>
+        </div>
+      </div>
+      <div class="player you">
+        <div class="player-turn-indicator">
+          You're up
+        </div>
+        <div class="player-details">
+          You 
+          <span class="player-points">22</span>>
+        </div>
+      </div>
+    </div>
+    <div class="action-buttons">
+      <button class="btn wide">Build / Buy</button>
+      <button class="btn wide">Play Action Card</button>
+      <button class="btn wide">Trade</button>
+    </div>
+  </div>
+  </div>
+</header>
+<main class="gameplay">
+<div class="game-board">
+  <div class="grid-outer">
+  <div class="grid-inner">
+    <div class="grid">
+
+      <!-- row 1 -->
+      <div class="grid-item empty">1</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      
+
+      <div class="grid-item village v-1">V</div>
+      <div class="grid-item road r-1">R</div>
+      <div class="grid-item village v-2">V</div>
+      <div class="grid-item empty middle">-</div>
+
+      <div class="grid-item village v-3">V</div>
+      <div class="grid-item road r-2">R</div>
+      <div class="grid-item village v-4">V</div>
+      <div class="grid-item empty middle">-</div>
+
+      <div class="grid-item village v-5">V</div>
+      <div class="grid-item road r-3">R</div>
+      <div class="grid-item village v-6">V</div>
+
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+
+      <!-- row 2 --> 
+      <div class="grid-item empty">2</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      
+      <div class="grid-item road r-4">R</div>
+      <div class="grid-item hex h-1 top">H</div>
+      <div class="grid-item road r-5">R</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+
+      <div class="grid-item road r-6">R</div>
+      <div class="grid-item hex h-2 top">H</div>
+      <div class="grid-item road r-7">R</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+
+      <div class="grid-item road r-8">R</div>
+      <div class="grid-item hex h-3 top">H</div>
+      <div class="grid-item road r-9">R</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      
+
+      <!-- row 3 -->
+      <div class="grid-item empty">3</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+
+      <div class="grid-item village v-7">V</div>
+      <div class="grid-item road r-10">R</div>
+      <div class="grid-item village v-8">V</div>
+      <div class="grid-item hex middle">-</div>
+
+      <div class="grid-item village v-9">V</div>
+      <div class="grid-item road r-11">R</div>
+      <div class="grid-item village v-10">V</div>
+      <div class="grid-item hex middle">-</div>
+
+      <div class="grid-item village v-11">V</div>
+      <div class="grid-item road r-12">R</div>
+      <div class="grid-item village v-12">V</div>
+      <div class="grid-item hex middle">-</div>
+
+      <div class="grid-item village v-11">V</div>
+      <div class="grid-item road r-12">R</div>
+      <div class="grid-item village v-12">V</div>      
+
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+
+      <!-- row 4 -->
+      <div class="grid-item empty">4</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+
+      <div class="grid-item road r-4">R</div>
+      <div class="grid-item hex h-1 top">H</div>
+      <div class="grid-item road r-5">R</div>
+      <div class="grid-item hex h-1 bottom">H</div>
+
+      <div class="grid-item road r-4">R</div>
+      <div class="grid-item hex h-1 top">H</div>
+      <div class="grid-item road r-5">R</div>
+      <div class="grid-item hex h-1 bottom">H</div>
+
+      <div class="grid-item road r-4">R</div>
+      <div class="grid-item hex h-1 top">H</div>
+      <div class="grid-item road r-5">R</div>
+      <div class="grid-item hex h-1 bottom">H</div>
+
+      <div class="grid-item road r-4">R</div>
+      <div class="grid-item hex h-1 top">H</div>
+      <div class="grid-item road r-5">R</div>
+
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+
+      
+      <!-- row 5 -->
+      <div class="grid-item empty">5</div>
+      <div class="grid-item empty">~</div>
+
+      <div class="grid-item village v-7">V</div>
+      <div class="grid-item road r-10">R</div>
+      <div class="grid-item village v-8">V</div>
+      <div class="grid-item hex middle">-</div>      
+      
+      <div class="grid-item village v-7">V</div>
+      <div class="grid-item road r-10">R</div>
+      <div class="grid-item village v-8">V</div>
+      <div class="grid-item hex middle">-</div>      
+
+      <div class="grid-item village v-7">V</div>
+      <div class="grid-item road r-10">R</div>
+      <div class="grid-item village v-8">V</div>
+      <div class="grid-item hex middle">-</div>
+
+      <div class="grid-item village v-7">V</div>
+      <div class="grid-item road r-10">R</div>
+      <div class="grid-item village v-8">V</div>
+      <div class="grid-item hex middle">-</div>
+
+      <div class="grid-item village v-7">V</div>
+      <div class="grid-item road r-10">R</div>
+      <div class="grid-item village v-8">V</div>
+
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      
+      <!-- row 6 -->
+      <div class="grid-item empty">6</div>
+
+      <div class="grid-item road r-4">R</div>
+      <div class="grid-item hex h-1 top">H</div>
+      <div class="grid-item road r-5">R</div>
+      <div class="grid-item hex h-1 bottom">H</div>
+
+      <div class="grid-item road r-4">R</div>
+      <div class="grid-item hex h-1 top">H</div>
+      <div class="grid-item road r-5">R</div>
+      <div class="grid-item hex h-1 bottom">H</div>
+
+      <div class="grid-item road r-4">R</div>
+      <div class="grid-item hex h-1 top">H</div>
+      <div class="grid-item road r-5">R</div>
+      <div class="grid-item hex h-1 bottom">H</div>
+
+      <div class="grid-item road r-4">R</div>
+      <div class="grid-item hex h-1 top">H</div>
+      <div class="grid-item road r-5">R</div>
+      <div class="grid-item hex h-1 bottom">H</div>      
+
+      <div class="grid-item road r-4">R</div>
+      <div class="grid-item hex h-1 top">H</div>
+      <div class="grid-item road r-5">R</div>
+
+      <div class="grid-item empty">~</div>
+
+      <!-- row 7 -->
+      <div class="grid-item village v-8">V</div>
+      <div class="grid-item hex middle">-</div>      
+      
+      <div class="grid-item village v-7">V</div>
+      <div class="grid-item road r-10">R</div>
+      <div class="grid-item village v-8">V</div>
+      <div class="grid-item hex middle">-</div>      
+
+      <div class="grid-item village v-7">V</div>
+      <div class="grid-item road r-10">R</div>
+      <div class="grid-item village v-8">V</div>
+      <div class="grid-item hex middle">-</div>
+
+      <div class="grid-item village v-7">V</div>
+      <div class="grid-item road r-10">R</div>
+      <div class="grid-item village v-8">V</div>
+      <div class="grid-item hex middle">-</div>
+
+      <div class="grid-item village v-7">V</div>
+      <div class="grid-item road r-10">R</div>
+      <div class="grid-item village v-8">V</div>
+      <div class="grid-item hex middle">-</div>
+
+      <div class="grid-item village v-7">V</div>
+
+
+      <!-- row 8  -->
+      <div class="grid-item empty">8</div>
+
+      <div class="grid-item road r-4">R</div>
+      <div class="grid-item hex h-1 top">H</div>
+      <div class="grid-item road r-5">R</div>
+      <div class="grid-item hex h-1 bottom">H</div>
+
+      <div class="grid-item road r-4">R</div>
+      <div class="grid-item hex h-1 top">H</div>
+      <div class="grid-item road r-5">R</div>
+      <div class="grid-item hex h-1 bottom">H</div>
+
+      <div class="grid-item road r-4">R</div>
+      <div class="grid-item hex h-1 top">H</div>
+      <div class="grid-item road r-5">R</div>
+      <div class="grid-item hex h-1 bottom">H</div>
+
+      <div class="grid-item road r-4">R</div>
+      <div class="grid-item hex h-1 top">H</div>
+      <div class="grid-item road r-5">R</div>
+      <div class="grid-item hex h-1 bottom">H</div>      
+
+      <div class="grid-item road r-4">R</div>
+      <div class="grid-item hex h-1 top">H</div>
+      <div class="grid-item road r-5">R</div>
+
+      <div class="grid-item empty">~</div>
+      
+      <!-- row 9  -->
+      <div class="grid-item empty">9</div>
+      <div class="grid-item empty">~</div>
+
+      <div class="grid-item village v-7">V</div>
+      <div class="grid-item road r-10">R</div>
+      <div class="grid-item village v-8">V</div>
+      <div class="grid-item hex middle">-</div>      
+      
+      <div class="grid-item village v-7">V</div>
+      <div class="grid-item road r-10">R</div>
+      <div class="grid-item village v-8">V</div>
+      <div class="grid-item hex middle">-</div>      
+
+      <div class="grid-item village v-7">V</div>
+      <div class="grid-item road r-10">R</div>
+      <div class="grid-item village v-8">V</div>
+      <div class="grid-item hex middle">-</div>
+
+      <div class="grid-item village v-7">V</div>
+      <div class="grid-item road r-10">R</div>
+      <div class="grid-item village v-8">V</div>
+      <div class="grid-item hex middle">-</div>
+
+      <div class="grid-item village v-7">V</div>
+      <div class="grid-item road r-10">R</div>
+      <div class="grid-item village v-8">V</div>
+
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      
+      <!-- row 10  -->
+      <div class="grid-item empty">10</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+
+      <div class="grid-item road r-4">R</div>
+      <div class="grid-item hex h-1 top">H</div>
+      <div class="grid-item road r-5">R</div>
+      <div class="grid-item hex h-1 bottom">H</div>
+
+      <div class="grid-item road r-4">R</div>
+      <div class="grid-item hex h-1 top">H</div>
+      <div class="grid-item road r-5">R</div>
+      <div class="grid-item hex h-1 bottom">H</div>
+
+      <div class="grid-item road r-4">R</div>
+      <div class="grid-item hex h-1 top">H</div>
+      <div class="grid-item road r-5">R</div>
+      <div class="grid-item hex h-1 bottom">H</div>
+
+      <div class="grid-item road r-4">R</div>
+      <div class="grid-item hex h-1 top">H</div>
+      <div class="grid-item road r-5">R</div>
+
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      
+      <!-- row 11  -->
+      <div class="grid-item empty">11</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+
+      <div class="grid-item village v-7">V</div>
+      <div class="grid-item road r-10">R</div>
+      <div class="grid-item village v-8">V</div>
+      <div class="grid-item hex middle">-</div>
+
+      <div class="grid-item village v-9">V</div>
+      <div class="grid-item road r-11">R</div>
+      <div class="grid-item village v-10">V</div>
+      <div class="grid-item hex middle">-</div>
+
+      <div class="grid-item village v-11">V</div>
+      <div class="grid-item road r-12">R</div>
+      <div class="grid-item village v-12">V</div>
+      <div class="grid-item hex middle">-</div>
+
+      <div class="grid-item village v-11">V</div>
+      <div class="grid-item road r-12">R</div>
+      <div class="grid-item village v-12">V</div>      
+
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      
+      <!-- row 12  -->
+      <div class="grid-item empty">12</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      
+      <div class="grid-item road r-4">R</div>
+      <div class="grid-item hex h-1 top">H</div>
+      <div class="grid-item road r-5">R</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+
+      <div class="grid-item road r-6">R</div>
+      <div class="grid-item hex h-2 top">H</div>
+      <div class="grid-item road r-7">R</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+
+      <div class="grid-item road r-8">R</div>
+      <div class="grid-item hex h-3 top">H</div>
+      <div class="grid-item road r-9">R</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      
+      <!-- row 13  -->
+      <div class="grid-item empty">13</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      
+
+      <div class="grid-item village v-1">V</div>
+      <div class="grid-item road r-1">R</div>
+      <div class="grid-item village v-2">V</div>
+      <div class="grid-item empty middle">-</div>
+
+      <div class="grid-item village v-3">V</div>
+      <div class="grid-item road r-2">R</div>
+      <div class="grid-item village v-4">V</div>
+      <div class="grid-item empty middle">-</div>
+
+      <div class="grid-item village v-5">V</div>
+      <div class="grid-item road r-3">R</div>
+      <div class="grid-item village v-6">V</div>
+
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      <div class="grid-item empty">~</div>
+      
+      <!-- end of rows -->
+
+    </div>
+<style type="text/css">
+/* OUTER CONTAINER: fixed-size viewport with scrolling */
+.grid-outer {
+  width: 100%;
+  max-width: 1020px;
+  margin: 0 auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  border: 2px solid #ddd;
+  padding: 10px;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+/* INNER CONTAINER: expands horizontally as needed */
+.grid-inner {
+  display: inline-block;      /* allows natural width */
+  white-space: nowrap;        /* ensures rows won't wrap */
+}
+
+/* YOUR GRID: now lives inside grid-inner */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(39, 1fr); /* or JS-set, or 39, or whatever */
+  grid-template-rows: repeat(13, auto);
+  gap: 10px;
+  width: auto;                /* let it expand to content width */
+  max-width: none;            /* remove limiting container width */
+  box-sizing: border-box;
+}
+
+/* Grid item styling stays the same */
+.grid-item {
+  background: #eee;
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+  font-size: 10px;
+  box-sizing: border-box;
+}
+.hex { background-color: darkgray; }
+.empty { background-color: transparent; border: transparent; }
+.village { background-color: tan; }
+.road { background-color: sienna; }
+.middle {     grid-column: span 5;  }
+.top, .bottom {     grid-column: span 3;  }
+
+</style>
+<script type="text/javascript">
+  window.addEventListener("load", () => {
+  const outer = document.querySelector(".grid-outer");
+  const inner = document.querySelector(".grid-inner");
+
+  outer.scrollLeft = (inner.scrollWidth - outer.clientWidth) / 2;
+});
+
+</script>
+
+</div>
+</div></div>
+</main>
+
+
+<script src="main.js"></script>
+</body>
+</html>

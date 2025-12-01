@@ -449,3 +449,21 @@ select {
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
+
+#grid-container {
+  width: 100%;             /* variable width parent */
+  max-width: 100%;         /* prevents overflow */
+  margin: 0 auto;
+}
+
+#grid {
+  display: grid;
+  grid-template-columns: repeat(39, 1fr);
+  width: 100%;
+}
+
+.cell {
+  aspect-ratio: 1 / 1;     /* forces perfect square */
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
