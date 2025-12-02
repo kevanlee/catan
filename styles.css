@@ -248,10 +248,6 @@ body {
   margin-left: 15px;
 }
 
-footer {
-
-}
-
 #taskbar {
   position: fixed;
   left: 0;
@@ -473,3 +469,12 @@ select {
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
+
+.hide { display: none; }
+
+.resource-brick { background: #e88a65; }
+.resource-wood  { background: #5ca66a; }
+.resource-wheat { background: #f6d36c; }
+.resource-ore   { background: #9da4b0; }
+.resource-sheep { background: #b8e297; }
+.resource-desert { background: #e7dfc9; }

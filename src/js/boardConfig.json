@@ -1,0 +1,151 @@
+{
+  "hexes": [
+    {
+      "id": "hex_1",
+      "cssClass": "h-1",
+      "resource": "brick",
+      "dice": 8
+    },
+    {
+      "id": "hex_2",
+      "cssClass": "h-2",
+      "resource": "wood",
+      "dice": 5
+    },
+    {
+      "id": "hex_3",
+      "cssClass": "h-3",
+      "resource": "wheat",
+      "dice": 11
+    },
+    {
+      "id": "hex_4",
+      "cssClass": "h-4",
+      "resource": "brick",
+      "dice": 8
+    },
+    {
+      "id": "hex_5",
+      "cssClass": "h-5",
+      "resource": "wood",
+      "dice": 5
+    },
+    {
+      "id": "hex_6",
+      "cssClass": "h-6",
+      "resource": "wheat",
+      "dice": 11
+    },
+    {
+      "id": "hex_7",
+      "cssClass": "h-7",
+      "resource": "brick",
+      "dice": 8
+    },
+    {
+      "id": "hex_8",
+      "cssClass": "h-8",
+      "resource": "wood",
+      "dice": 5
+    },
+    {
+      "id": "hex_9",
+      "cssClass": "h-9",
+      "resource": "wheat",
+      "dice": 11
+    },
+    {
+      "id": "hex_10",
+      "cssClass": "h-10",
+      "resource": "brick",
+      "dice": 8
+    },
+    {
+      "id": "hex_11",
+      "cssClass": "h-11",
+      "resource": "wood",
+      "dice": 5
+    },
+    {
+      "id": "hex_12",
+      "cssClass": "h-12",
+      "resource": "wheat",
+      "dice": 11
+    },
+    {
+      "id": "hex_13",
+      "cssClass": "h-13",
+      "resource": "brick",
+      "dice": 8
+    },
+    {
+      "id": "hex_14",
+      "cssClass": "h-14",
+      "resource": "wood",
+      "dice": 5
+    },
+    {
+      "id": "hex_15",
+      "cssClass": "h-15",
+      "resource": "wheat",
+      "dice": 11
+    },
+    {
+      "id": "hex_16",
+      "cssClass": "h-16",
+      "resource": "wheat",
+      "dice": 11
+    },
+    {
+      "id": "hex_17",
+      "cssClass": "h-17",
+      "resource": "brick",
+      "dice": 8
+    },
+    {
+      "id": "hex_18",
+      "cssClass": "h-18",
+      "resource": "wood",
+      "dice": 5
+    },
+    {
+      "id": "hex_19",
+      "cssClass": "h-19",
+      "resource": "wheat",
+      "dice": 11
+    }
+  ],
+
+  "vertices": [
+    {
+      "id": "v_1",
+      "adjacentHexes": ["hex_1"],
+      "position": { "row": 3, "col": 14 }
+    },
+    {
+      "id": "v_2",
+      "adjacentHexes": ["hex_1"],
+      "position": { "row": 3, "col": 14 }
+    }
+  ],
+
+  "roads": [
+    {
+      "id": "road_0",
+      "vertices": ["v_0", "v_1"],
+      "position": { "row": 3, "col": 15 }
+    }
+  ],
+
+  "players": {
+    "red":    { "type": "human" },
+    "blue":   { "type": "ai"    },
+    "green":  { "type": "ai"    },
+    "yellow": { "type": "ai"    }
+  },
+
+  "rules": {
+    "useClassicRules": true,
+    "minRoadLengthForLongest": 5
+  }
+}
