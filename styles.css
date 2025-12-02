@@ -472,6 +472,52 @@ select {
 
 .hide { display: none; }
 
+/* OUTER CONTAINER: fixed-size viewport with scrolling */
+.grid-outer {
+  width: 100%;
+  max-width: 1020px;
+  margin: 0 auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  border: 2px solid #ddd;
+  padding: 10px;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+/* INNER CONTAINER: expands horizontally as needed */
+.grid-inner {
+  display: inline-block;      /* allows natural width */
+  white-space: nowrap;        /* ensures rows won't wrap */
+}
+
+/* YOUR GRID: now lives inside grid-inner */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(39, 1fr); /* or JS-set, or 39, or whatever */
+  grid-template-rows: repeat(13, auto);
+  gap: 10px;
+  width: auto;                /* let it expand to content width */
+  max-width: none;            /* remove limiting container width */
+  box-sizing: border-box;
+}
+
+/* Grid item styling stays the same */
+.grid-item {
+  background: #eee;
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+  font-size: 10px;
+  box-sizing: border-box;
+}
+.hex { background-color: darkgray; }
+.empty { background-color: transparent; border: transparent; }
+.village { background-color: tan; }
+.road { background-color: sienna; }
+.middle {     grid-column: span 5;  }
+.top, .bottom {     grid-column: span 3;  }
+
 .resource-brick { background: #e88a65; }
 .resource-wood  { background: #5ca66a; }
 .resource-wheat { background: #f6d36c; }
