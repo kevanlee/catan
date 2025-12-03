@@ -20,40 +20,40 @@
   </div>
   <div class="right-nav hide">
     <div class="players">
-      <div class="player p1">
+      <div class="player p1" data-player-id="red">
         <div class="player-turn-indicator">
           You're up
         </div>
         <div class="player-details">
-          Player 1 
-          <span class="player-points">22</span>>
+          <span class="player-name">Player 1</span>
+          <span class="player-points">0</span>
         </div>
       </div>
-      <div class="player p2">
+      <div class="player p2" data-player-id="blue">
         <div class="player-turn-indicator">
           You're up
         </div>
         <div class="player-details">
-          Player 2
-          <span class="player-points">22</span>>
+          <span class="player-name">Player 2</span>
+          <span class="player-points">0</span>
         </div>
       </div>
-      <div class="player p3">
+      <div class="player p3" data-player-id="green">
         <div class="player-turn-indicator">
           You're up
         </div>
         <div class="player-details">
-          Player 3
-          <span class="player-points">22</span>>
+          <span class="player-name">Player 3</span>
+          <span class="player-points">0</span>
         </div>
       </div>
-      <div class="player you">
+      <div class="player you" data-player-id="yellow">
         <div class="player-turn-indicator">
           You're up
         </div>
         <div class="player-details">
-          You 
-          <span class="player-points">22</span>>
+          <span class="player-name">You</span>
+          <span class="player-points">0</span>
         </div>
       </div>
     </div>
@@ -68,7 +68,7 @@
 <main class="gameplay">
   <div id="game-setup">
     <div id="lets-go">
-            <a href="/gameplay.html"><button class="btn wide">Start new game</button></a>
+            <a href="/gameplay.html?newGame=1"><button class="btn wide">Start new game</button></a>
     </div>
   </div>
   <style type="text/css">

@@ -2,14 +2,29 @@
 
 export const players = {};
 
+const DEFAULT_PLAYERS = {
+  red: { type: "human" },
+  blue: { type: "ai" },
+  green: { type: "ai" },
+  yellow: { type: "ai" }
+};
+
 /**
  * Initializes the player model using player entries from the config.
  * This stub creates empty players with IDs.
  */
-export function initPlayersFromConfig(playersConfig) {
+export function initPlayersFromConfig(playersConfig, { reset = true } = {}) {
   console.log("initPlayersFromConfig() called with:", playersConfig);
 
-  Object.entries(playersConfig).forEach(([id, info]) => {
+  if (reset) {
+    resetPlayers();
+  }
+
+  const config = playersConfig && Object.keys(playersConfig).length
+    ? playersConfig
+    : DEFAULT_PLAYERS;
+
+  Object.entries(config).forEach(([id, info]) => {
     players[id] = {
       id,
       type: info.type || "ai",
@@ -28,4 +43,8 @@ export function initPlayersFromConfig(playersConfig) {
   });
 
   console.log("Initialized players:", players);
+}
+
+export function resetPlayers() {
+  Object.keys(players).forEach(id => delete players[id]);
 }

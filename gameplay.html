@@ -20,40 +20,40 @@
   </div>
   <div class="right-nav">
     <div class="players">
-      <div class="player p1">
+      <div class="player p1" data-player-id="red">
         <div class="player-turn-indicator">
           You're up
         </div>
         <div class="player-details">
-          Player 1 
-          <span class="player-points">22</span>>
+          <span class="player-name">Player 1</span>
+          <span class="player-points">0</span>
         </div>
       </div>
-      <div class="player p2">
+      <div class="player p2" data-player-id="blue">
         <div class="player-turn-indicator">
           You're up
         </div>
         <div class="player-details">
-          Player 2
-          <span class="player-points">22</span>>
+          <span class="player-name">Player 2</span>
+          <span class="player-points">0</span>
         </div>
       </div>
-      <div class="player p3">
+      <div class="player p3" data-player-id="green">
         <div class="player-turn-indicator">
           You're up
         </div>
         <div class="player-details">
-          Player 3
-          <span class="player-points">22</span>>
+          <span class="player-name">Player 3</span>
+          <span class="player-points">0</span>
         </div>
       </div>
-      <div class="player you">
+      <div class="player you" data-player-id="yellow">
         <div class="player-turn-indicator">
           You're up
         </div>
         <div class="player-details">
-          You 
-          <span class="player-points">22</span>>
+          <span class="player-name">You</span>
+          <span class="player-points">0</span>
         </div>
       </div>
     </div>
@@ -66,6 +66,69 @@
   </div>
 </header>
 <main class="gameplay">
+  <div id="floating-windows">
+    <div class="window floating-window" id="cards-window" data-window-title="Cards" style="top: 190px; left: 30px;">
+      <div class="window-titlebar">
+        <span>Cards</span>
+        <button class="window-control" data-action="minimize">_</button>
+      </div>
+      <div class="window-content">
+        <div class="progress">
+          <div class="item">
+            <div class="label">Your resources</div>
+            <div class="meta">Brick: 0, Wood: 0, Sheep: 0, Wheat: 0, Ore: 0</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="window floating-window" id="build-window" data-window-title="Build" style="top: 190px; left: 360px;">
+      <div class="window-titlebar">
+        <span>Build Directions</span>
+        <button class="window-control" data-action="minimize">_</button>
+      </div>
+      <div class="window-content">
+        <div class="progress">
+          <div class="item">
+            <div class="label">Place your first village</div>
+            <div class="meta">Select a vertex on the board, then place an adjacent road.</div>
+          </div>
+          <div class="item">
+            <div class="label">Opening placement</div>
+            <div class="meta">Player 1 (you) goes first, then AIs follow clockwise.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="window floating-window" id="dice-window" data-window-title="Dice" style="top: 190px; left: 690px;">
+      <div class="window-titlebar">
+        <span>Dice Roll</span>
+        <button class="window-control" data-action="minimize">_</button>
+      </div>
+      <div class="window-content">
+        <div class="progress">
+          <div class="item">
+            <div class="label">Current roll</div>
+            <div class="meta">Waiting for your first action.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="window floating-window" id="game-log" data-window-title="Game Log" style="top: 450px; left: 30px; width: 620px;">
+      <div class="window-titlebar">
+        <span>Game Log</span>
+        <button class="window-control" data-action="minimize">_</button>
+      </div>
+      <div class="window-content">
+        <ul></ul>
+      </div>
+    </div>
+  </div>
+
+  <div id="window-dock"></div>
+
 <div class="game-board">
   <div class="grid-outer">
   <div class="grid-inner">
