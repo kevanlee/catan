@@ -22,7 +22,7 @@
     <div class="players">
       <div class="player p1" data-player-id="red">
         <div class="player-turn-indicator">
-          You're up
+          →
         </div>
         <div class="player-details">
           <span class="player-name">Player 1</span>
@@ -31,7 +31,7 @@
       </div>
       <div class="player p2" data-player-id="blue">
         <div class="player-turn-indicator">
-          You're up
+→
         </div>
         <div class="player-details">
           <span class="player-name">Player 2</span>
@@ -40,7 +40,7 @@
       </div>
       <div class="player p3" data-player-id="green">
         <div class="player-turn-indicator">
-          You're up
+→
         </div>
         <div class="player-details">
           <span class="player-name">Player 3</span>
@@ -49,7 +49,7 @@
       </div>
       <div class="player you" data-player-id="yellow">
         <div class="player-turn-indicator">
-          You're up
+→
         </div>
         <div class="player-details">
           <span class="player-name">You</span>
@@ -69,14 +69,38 @@
   <div id="floating-windows">
     <div class="window floating-window" id="cards-window" data-window-title="Cards" style="top: 190px; left: 30px;">
       <div class="window-titlebar">
-        <span>Cards</span>
+        <span>Your Cards</span>
         <button class="window-control" data-action="minimize">_</button>
       </div>
       <div class="window-content">
         <div class="progress">
           <div class="item">
-            <div class="label">Your resources</div>
-            <div class="meta">Brick: 0, Wood: 0, Sheep: 0, Wheat: 0, Ore: 0</div>
+            <div class="cards">
+              <div class="resource wheat">        
+                <div class="resource-card">W</div>
+                <div class="count">0</div>
+              </div>
+              <div class="resource brick">
+                <div class="resource-card">B</div>
+                <div class="count">0</div>
+              </div>
+              <div class="resource wood">
+                <div class="resource-card">W</div>
+                <div class="count">0</div>
+              </div>
+              <div class="resource sheep">
+                <div class="resource-card">S</div>
+                <div class="count">0</div>
+              </div>
+              <div class="resource ore">
+                <div class="resource-card">O</div>
+                <div class="count">0</div>
+              </div>
+              <div class="resource action">
+                <div class="resource-card">AC</div>
+                <div class="count">0</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -88,14 +112,47 @@
         <button class="window-control" data-action="minimize">_</button>
       </div>
       <div class="window-content">
-        <div class="progress">
+        <div class="progress build-data">
           <div class="item">
-            <div class="label">Place your first village</div>
-            <div class="meta">Select a vertex on the board, then place an adjacent road.</div>
+            <div>
+              <span class="label">Roads</span>
+              <span class="value">x3</span>
+            </div>
+            <div>
+              <span class="meta">1 Wood</span>
+              <span class="meta">1 Brick</span>
+            </div>  
           </div>
           <div class="item">
-            <div class="label">Opening placement</div>
-            <div class="meta">Player 1 (you) goes first, then AIs follow clockwise.</div>
+            <div>
+            <span class="label">Villages</span>
+            <span class="value">x2/5</span>
+            </div>
+            <div>
+            <span class="meta">1 Wood</span>
+            <span class="meta">1 Wheat</span>
+            <span class="meta">1 Brick</span>
+            <span class="meta">1 Sheep</span>
+            </div>  
+          </div>
+          <div class="item">
+            <div>
+            <span class="label">Cities</span>
+            <span class="value">x4/4</span>
+            </div>
+            <div>
+            <span class="meta">2 Wheat</span>
+            <span class="meta">3 Rock</span>
+            </div>
+          </div>
+          <div class="item">
+            <div>
+            <span class="label">Action Cards</span>
+            <span class="value">x3</span>
+            </div>
+            <div>
+            <span class="meta">1 Sheep</span>
+            </div>
           </div>
         </div>
       </div>
@@ -109,9 +166,15 @@
       <div class="window-content">
         <div class="progress">
           <div class="item">
-            <div class="label">Current roll</div>
-            <div class="meta">Waiting for your first action.</div>
+            <div class="dice">
+              <div class="die left">4</div>
+              <div class="die right">3</div> 
+              <span class="equals">=</span>
+              <div class="die total">7</div>
+            </div>
           </div>
+            <button class="btn wide">Roll Dice</button>
+
         </div>
       </div>
     </div>
@@ -122,7 +185,7 @@
         <button class="window-control" data-action="minimize">_</button>
       </div>
       <div class="window-content">
-        <ul></ul>
+        <ul class="gamelog-updates"></ul>
       </div>
     </div>
   </div>
@@ -593,3 +656,4 @@
 
 </body>
 </html>
+
