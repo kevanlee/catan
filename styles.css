@@ -82,6 +82,13 @@ body {
   color: var(--gray-600);
 }
 
+#game-setup {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    height: 40vh;
+}
+
 .players {
   display: flex;
   flex-direction: row;
@@ -91,16 +98,35 @@ body {
 }
 
 .player {
-  padding: 8px 12px;
+  padding: 8px 22px;
   border: 2px solid transparent;
   border-radius: 6px;
-  background: rgba(255, 255, 255, 0.8);
+  background: #e8e8e8;
+  display: flex;
+  gap: 8px;
+  flex-direction: row;
+  align-items: center;
+}
+
+.player-details { display: flex; flex-direction: row; align-items: center; gap: 8px; }
+.player-name { font-weight: 700; }
+.player-points {
+  width: 35px;
+  height: 35px;
+  background: #9da4b0; /* your color */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
 }
 
 .player-turn-indicator {
   display: none;
   font-weight: 700;
   color: #0f4fa8;
+  min-height: 20px;
 }
 
 .player.is-active {
@@ -189,7 +215,7 @@ body {
 }
 
 .window-content {
-  background: #e5e5e5;
+  background: #fff;
   border-top: 2px solid #7a7a7a;
   padding: 16px;
   display: grid;
@@ -232,31 +258,6 @@ body {
 
 .dock-item:active {
   box-shadow: inset 2px 2px 0 #7a7a7a, inset -2px -2px 0 #fff;
-}
-
-.progress {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  border: 2px solid #000;
-  padding: 12px 14px;
-  background: #fff;
-  box-shadow: inset -2px -2px 0 #7a7a7a, inset 2px 2px 0 #fff;
-}
-
-.progress .item {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.progress .label {
-  font-weight: 700;
-}
-
-.progress .meta {
-  font-size: 13px;
-  color: var(--gray-600);
 }
 
 .action-buttons {
@@ -383,30 +384,6 @@ body {
   font-weight: 600;
 }
 
-.dice-area {
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  gap: 12px;
-  flex-direction: column;
-}
-
-.dice {
-  display: grid;
-  grid-template-columns: repeat(2, 38px);
-  gap: 6px;
-}
-
-.pips {
-  display: grid;
-  place-items: center;
-  height: 38px;
-  width: 38px;
-  background: var(--gray-100);
-  border: 2px solid var(--gray-300);
-  border-radius: 8px;
-  font-size: 10px;
-}
 
 #game-log .window-content {
   height: 300px;
@@ -659,3 +636,103 @@ select {
 .resource-ore   { background: #9da4b0; }
 .resource-sheep { background: #b8e297; }
 .resource-desert { background: #e7dfc9; }
+
+
+/* Cards and Windows */
+
+.cards {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.resource {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.resource-card {
+  width: 67px;
+  height: 87px;
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 6px;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.gamelog-updates {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.gamelog-updates li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 12px 14px;
+  background: #fff;
+}
+
+.progress .item {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.progress .label {
+  font-weight: 700;
+}
+
+.progress .meta {
+  font-size: 13px;
+  color: var(--gray-600);
+}
+
+.build-data .item {
+  flex-direction: column;
+  gap: 4px;
+}
+
+
+.dice {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.die {
+  place-items: center;
+  height: 67px;
+  width: 67px;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.die:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.die.left { background-color: var(--gray-800); color: white; }
+.die.right { background-color: var(--gray-600); color: white; }
+.die.total { background-color: var(--gray-300); color: var(--gray-800); }
