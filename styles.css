@@ -90,11 +90,26 @@ body {
   gap: 15px;
 }
 
-#game-setup {
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
-  height: 40vh;
+.player {
+  padding: 8px 12px;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.player-turn-indicator {
+  display: none;
+  font-weight: 700;
+  color: #0f4fa8;
+}
+
+.player.is-active {
+  border-color: #0f4fa8;
+  box-shadow: 0 0 0 2px #0f4fa8 inset;
+}
+
+.player.is-active .player-turn-indicator {
+  display: block;
 }
 
 /* BODY */
@@ -137,6 +152,9 @@ body {
 
 .window.floating-window {
   position: fixed;
+  z-index: 10;
+  top: 140px;
+  left: 24px;
 }
 
 .window-titlebar {
@@ -180,6 +198,40 @@ body {
 
 .window.is-minimized {
   display: none;
+}
+
+.window.is-active {
+  z-index: 20;
+}
+
+#window-dock {
+  position: fixed;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid #000;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.25);
+  z-index: 5;
+}
+
+#window-dock:empty {
+  display: none;
+}
+
+.dock-item {
+  background: #dcdcdc;
+  border: 2px solid #000;
+  padding: 8px 12px;
+  cursor: pointer;
+  box-shadow: inset -2px -2px 0 #7a7a7a, inset 2px 2px 0 #fff;
+}
+
+.dock-item:active {
+  box-shadow: inset 2px 2px 0 #7a7a7a, inset -2px -2px 0 #fff;
 }
 
 .progress {
