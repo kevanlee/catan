@@ -67,12 +67,34 @@ body {
   text-decoration: none; 
 }
 
+.title-text { max-width: 600px; }
+
+.title-text h1 {
+  margin: 0;
+  font-size: 3.5rem;
+  line-height: 110%; 
+  margin: 2rem 0; 
+}
+
+.title-text p {
+  margin: 0;
+  font-size: 1.6rem;
+  color: var(--gray-600);
+}
+
 .players {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 15px;
+}
+
+#game-setup {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  height: 40vh;
 }
 
 /* BODY */
