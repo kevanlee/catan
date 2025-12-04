@@ -8,17 +8,11 @@ import { initGameState, setCurrentPlayer } from "./gameState.js";
 import { initFloatingWindows } from "./ui/floatingWindows.js";
 
 window.addEventListener("DOMContentLoaded", () => {
-  setupRefreshWarning();
   startNewGame();
   initFloatingWindows();
+  disablePrimaryActions();
+  setupDiceUI();
 });
-
-
-function setupRefreshWarning() {
-  window.onbeforeunload = function () {
-    return "Refreshing will generate a brand-new board. Are you sure?";
-  };
-}
 
 function startNewGame() {
   initPlayersFromConfig(boardConfig.players);
@@ -46,10 +40,12 @@ function updatePlayerBar(activePlayerId) {
     const model = players[playerId];
     const nameEl = el.querySelector(".player-name");
     const pointsEl = el.querySelector(".player-points");
-    const typeLabel = model?.type === "human" ? "You" : `Computer ${index}`;
+    const displayName = model?.type === "human"
+      ? (model?.name || "You")
+      : (model?.name || `Computer ${index + 1}`);
 
     if (nameEl) {
-      nameEl.textContent = typeLabel;
+      nameEl.textContent = displayName;
     }
 
     if (pointsEl && model) {
@@ -81,5 +77,51 @@ function logEvent(message) {
 
   const item = document.createElement("li");
   item.textContent = message;
-  logList.appendChild(item);
+  logList.prepend(item);
+}
+
+function setupDiceUI() {
+  const rollButton = document.getElementById("roll-dice-btn");
+  const leftDieEl = document.getElementById("left-die");
+  const rightDieEl = document.getElementById("right-die");
+  const totalEl = document.getElementById("dice-total");
+
+  if (!rollButton || !leftDieEl || !rightDieEl || !totalEl) return;
+
+  rollButton.addEventListener("click", () => {
+    animateDiceRoll({ rollButton, leftDieEl, rightDieEl, totalEl });
+  });
+}
+
+function animateDiceRoll({ rollButton, leftDieEl, rightDieEl, totalEl }) {
+  if (rollButton.disabled) return;
+
+  rollButton.disabled = true;
+  totalEl.textContent = "";
+
+  const interval = setInterval(() => {
+    leftDieEl.textContent = getRandomDieValue();
+    rightDieEl.textContent = getRandomDieValue();
+  }, 100);
+
+  setTimeout(() => {
+    clearInterval(interval);
+    const leftValue = getRandomDieValue();
+    const rightValue = getRandomDieValue();
+    leftDieEl.textContent = leftValue;
+    rightDieEl.textContent = rightValue;
+    totalEl.textContent = leftValue + rightValue;
+    rollButton.disabled = false;
+  }, 1000);
+}
+
+function getRandomDieValue() {
+  return Math.floor(Math.random() * 6) + 1;
+}
+
+function disablePrimaryActions() {
+  const primaryButtons = document.querySelectorAll(".action-buttons .btn");
+  primaryButtons.forEach(btn => {
+    btn.disabled = true;
+  });
 }
