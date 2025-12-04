@@ -58,16 +58,16 @@
       </div>
     </div>
     <div class="action-buttons">
-      <button class="btn wide">Build / Buy</button>
-      <button class="btn wide">Play Action Card</button>
-      <button class="btn wide">Trade</button>
+      <button class="btn wide" disabled>Build / Buy</button>
+      <button class="btn wide" disabled>Play Action Card</button>
+      <button class="btn wide" disabled>Trade</button>
     </div>
   </div>
   </div>
 </header>
 <main class="gameplay">
   <div id="floating-windows">
-    <div class="window floating-window" id="cards-window" data-window-title="Cards" style="top: 190px; left: 30px;">
+    <div class="window floating-window" id="cards-window" data-window-title="Cards" data-start-minimized="true" style="top: 190px; left: 30px;">
       <div class="window-titlebar">
         <span>Cards</span>
         <button class="window-control" data-action="minimize">_</button>
@@ -82,7 +82,7 @@
       </div>
     </div>
 
-    <div class="window floating-window" id="build-window" data-window-title="Build" style="top: 190px; left: 360px;">
+    <div class="window floating-window" id="build-window" data-window-title="Build" data-start-minimized="true" style="top: 190px; left: 360px;">
       <div class="window-titlebar">
         <span>Build Directions</span>
         <button class="window-control" data-action="minimize">_</button>
@@ -101,22 +101,27 @@
       </div>
     </div>
 
-    <div class="window floating-window" id="dice-window" data-window-title="Dice" style="top: 190px; left: 690px;">
+    <div class="window floating-window" id="dice-window" data-window-title="Dice" style="bottom: 360px; right: 30px;">
       <div class="window-titlebar">
         <span>Dice Roll</span>
         <button class="window-control" data-action="minimize">_</button>
       </div>
       <div class="window-content">
-        <div class="progress">
-          <div class="item">
-            <div class="label">Current roll</div>
-            <div class="meta">Waiting for your first action.</div>
+        <div class="dice-area">
+          <div class="dice">
+            <div class="pips" id="left-die" aria-live="polite">-</div>
+            <div class="pips" id="right-die" aria-live="polite">-</div>
           </div>
+          <div class="dice-total">
+            <span class="label">Total:</span>
+            <span id="dice-total">--</span>
+          </div>
+          <button class="btn wide" id="roll-dice-btn">Roll Dice</button>
         </div>
       </div>
     </div>
 
-    <div class="window floating-window" id="game-log" data-window-title="Game Log" style="top: 450px; left: 30px; width: 620px;">
+    <div class="window floating-window" id="game-log" data-window-title="Game Log" style="bottom: 80px; right: 30px; width: 420px;">
       <div class="window-titlebar">
         <span>Game Log</span>
         <button class="window-control" data-action="minimize">_</button>

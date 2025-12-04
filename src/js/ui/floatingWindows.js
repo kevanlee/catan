@@ -21,6 +21,10 @@ export function initFloatingWindows() {
     }
 
     win.addEventListener("mousedown", () => setActiveWindow(win, windows));
+
+    if (win.dataset.startMinimized === "true") {
+      minimizeWindow(win, dock);
+    }
   });
 }
 
