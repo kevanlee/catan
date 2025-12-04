@@ -4,8 +4,21 @@
   --gray-300: #d1d5db;
   --gray-600: #4b5563;
   --gray-800: #1f2937;
-  font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+  --hot-green: #BEFA4F;
+  --hot-blue: #5aa7b9;
+  --hot-pink: #E83399;
+  --hot-purple: #513A6B;
+  --neon-blue: #182CD4;
+  --neon-yellow: #C4FA6F;
+  --neon-pink: #fc42e3;
+  --neon-red: #ff1d00;
+  --neon-orange: #ffbb00;
+  --neon-white: #d7f3c3;
+  --neon-gray: #EEEEEE;
+  --neon-black: #3a3f47;
 }
+
+/* https://looka.com/blog/neon-color-palettes/ */
 
 * {
   box-sizing: border-box;
@@ -17,6 +30,7 @@ body {
   background: #fff;
   color: var(--gray-800);
   padding-bottom: 110px;
+  font-family: 'Martian-Mono', monospace;
 }
 
 #wrapper {
@@ -67,19 +81,19 @@ body {
   text-decoration: none; 
 }
 
-.title-text { max-width: 600px; }
+.title-text { max-width: 1000px; }
 
 .title-text h1 {
-  margin: 0;
-  font-size: 3.5rem;
+  font-size: 5.5rem;
   line-height: 110%; 
-  margin: 2rem 0; 
+  margin: 6rem 0 1rem 0; 
 }
 
 .title-text p {
-  margin: 0;
+  margin: 0 auto;
   font-size: 1.6rem;
   color: var(--gray-600);
+  width: 75%;
 }
 
 #game-setup {
@@ -94,14 +108,12 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 15px;
 }
 
 .player {
   padding: 8px 22px;
   border: 2px solid transparent;
   border-radius: 6px;
-  background: #e8e8e8;
   display: flex;
   gap: 8px;
   flex-direction: row;
@@ -113,25 +125,27 @@ body {
 .player-points {
   width: 35px;
   height: 35px;
-  background: #9da4b0; /* your color */
-  border-radius: 50%;
+  background: var(--neon-gray);
+  border-radius: 2px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
-  font-weight: bold;
+  color: var(--neon-black);
+  border: 1px solid var(--neon-black);
 }
 
 .player-turn-indicator {
   display: none;
   font-weight: 700;
-  color: #0f4fa8;
-  min-height: 20px;
+  color: var(--neon-blue);
+  background: var(--neon-yellow);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.8rem;
 }
 
 .player.is-active {
-  border-color: #0f4fa8;
-  box-shadow: 0 0 0 2px #0f4fa8 inset;
+  background: var(--neon-gray);
 }
 
 .player.is-active .player-turn-indicator {
@@ -187,11 +201,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: linear-gradient(180deg, #0f4fa8 0%, #062e6f 100%);
-  color: white;
+  background: var(--neon-black);
+  color: var(--neon-gray);
   padding: 6px 10px;
   border-bottom: 2px solid #000;
-  font-weight: 700;
   letter-spacing: 0.2px;
   width: 100%;
   box-sizing: border-box;
@@ -232,15 +245,15 @@ body {
 
 #window-dock {
   position: fixed;
-  bottom: 12px;
-  left: 50%;
-  transform: translateX(-50%);
+  height: 60px;
+  background: transparent;
+  bottom: 10px;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   gap: 10px;
   padding: 10px 14px;
-  background: rgba(255, 255, 255, 0.9);
-  border: 2px solid #000;
-  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.25);
   z-index: 5;
 }
 
@@ -250,6 +263,8 @@ body {
 
 .dock-item {
   background: #dcdcdc;
+  min-width: 150px;
+  font-size: 1rem;
   border: 2px solid #000;
   padding: 8px 12px;
   cursor: pointer;
@@ -275,6 +290,7 @@ body {
   cursor: pointer;
   font-size: 1.05rem;
   box-shadow: inset -2px -2px 0 #7a7a7a, inset 2px 2px 0 #fff;
+  border-radius: 2px;
 }
 
 .btn:hover {
@@ -287,10 +303,16 @@ body {
   cursor: not-allowed;
   box-shadow: inset -2px -2px 0 #bdbdbd, inset 2px 2px 0 #f7f7f7;
   opacity: 0.85;
+  border: lightgray; 
 }
 
 .btn:disabled:hover {
   background-color: var(--gray-200);
+}
+
+.btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #c98d24;
 }
 
 .btn.secondary {
@@ -708,6 +730,12 @@ select {
   gap: 4px;
 }
 
+.dice-area {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
 
 .dice {
   display: flex;
@@ -715,7 +743,7 @@ select {
   align-items: center;
 }
 
-.die {
+.pips {
   place-items: center;
   height: 67px;
   width: 67px;
@@ -728,11 +756,11 @@ select {
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.die:hover {
+.pips:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 16px rgba(0,0,0,0.2);
 }
 
-.die.left { background-color: var(--gray-800); color: white; }
-.die.right { background-color: var(--gray-600); color: white; }
-.die.total { background-color: var(--gray-300); color: var(--gray-800); }
+#left-die { background-color: var(--gray-800); color: white; }
+#right-die { background-color: var(--gray-600); color: white; }
+#dice-total { background-color: var(--gray-300); color: var(--gray-800); margin-left: 10px;}

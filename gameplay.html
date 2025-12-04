@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&display=swap" rel="stylesheet">
 </head>
 <body>
 <div id="wrapper">
@@ -22,7 +23,7 @@
     <div class="players">
       <div class="player p1" data-player-id="red">
         <div class="player-turn-indicator">
-          →
+          ◼️
         </div>
         <div class="player-details">
           <span class="player-name">Player 1</span>
@@ -166,15 +167,16 @@
       <div class="window-content">
         <div class="dice-area">
           <div class="dice">
-            <div class="pips" id="left-die" aria-live="polite">-</div>
-            <div class="pips" id="right-die" aria-live="polite">-</div>
+            <div class="pips" id="left-die" aria-live="polite">3</div>
+            <div class="pips" id="right-die" aria-live="polite">3</div>
           </div>
           <div class="dice-total">
-            <span class="label">Total:</span>
-            <span id="dice-total">--</span>
+            <span class="label">=</span>
+            <span id="dice-total" class="pips total">6</span>
           </div>
-          <button class="btn wide" id="roll-dice-btn">Roll Dice</button>
         </div>
+          <button class="btn wide" id="roll-dice-btn">Roll Dice</button>
+
       </div>
     </div>
 
