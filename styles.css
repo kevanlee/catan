@@ -33,6 +33,60 @@ body {
   font-family: 'Martian-Mono', monospace;
 }
 
+.setup-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out;
+  z-index: 40;
+}
+
+.setup-modal.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.setup-modal__content {
+  background: #ffffff;
+  border: 2px solid #000;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.25);
+  padding: 20px 26px;
+  border-radius: 8px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  max-width: 420px;
+}
+
+.setup-modal__message {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.setup-modal__spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid var(--gray-200);
+  border-top-color: var(--neon-blue);
+  border-radius: 50%;
+  animation: setup-spin 0.9s linear infinite;
+}
+
+.setup-modal__spinner.is-hidden {
+  display: none;
+}
+
+@keyframes setup-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 #wrapper {
   max-width: 100%;
   margin: 0 auto;

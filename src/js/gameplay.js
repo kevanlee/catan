@@ -7,14 +7,18 @@ import { initPlayersFromConfig, players } from "./players.js";
 import { initGameState, setCurrentPlayer } from "./gameState.js";
 import { initFloatingWindows } from "./ui/floatingWindows.js";
 
-window.addEventListener("DOMContentLoaded", () => {
-  startNewGame();
-  initFloatingWindows();
+const SETUP_THINK_TIME_MS = 850;
+
+window.addEventListener("DOMContentLoaded", async () => {
+  prepareSetupModal();
+  showSetupModal("Setting up the game board…", { loading: true });
+  await startNewGame();
+  initFloatingWindows({ startMinimized: true });
   disablePrimaryActions();
   setupDiceUI();
 });
 
-function startNewGame() {
+async function startNewGame() {
   initPlayersFromConfig(boardConfig.players);
 
   const randomHexes = generateRandomBoard();
@@ -25,7 +29,9 @@ function startNewGame() {
   updatePlayerBar(humanPlayerId);
   resetLog();
   logEvent("New game started. Hex tiles shuffled and dice assigned.");
-  logEvent("Your turn to place the first village and road.");
+  logEvent("Initial settlement and road placements begin (snake order).");
+
+  await runSetupPhase(humanPlayerId);
 }
 
 function getHumanPlayerId() {
@@ -124,4 +130,98 @@ function disablePrimaryActions() {
   primaryButtons.forEach(btn => {
     btn.disabled = true;
   });
+}
+
+function getSetupOrder(humanPlayerId) {
+  const ids = Object.keys(players);
+  const startIdx = ids.indexOf(humanPlayerId);
+
+  if (startIdx === -1) {
+    return ids;
+  }
+
+  return [...ids.slice(startIdx), ...ids.slice(0, startIdx)];
+}
+
+async function runSetupPhase(humanPlayerId) {
+  const orderedPlayers = getSetupOrder(humanPlayerId);
+  const placements = [
+    ...orderedPlayers.map(id => ({ playerId: id, placement: 1 })),
+    ...[...orderedPlayers].reverse().map(id => ({ playerId: id, placement: 2 }))
+  ];
+
+  for (const action of placements) {
+    await handleSetupTurn(action);
+  }
+
+  logEvent("All starting settlements and roads have been placed.");
+  setCurrentPlayer(humanPlayerId, "roll");
+  updatePlayerBar(humanPlayerId);
+  showSetupModal("Setup complete! Your normal turn will begin.", { loading: false });
+  setTimeout(hideSetupModal, 1600);
+}
+
+async function handleSetupTurn({ playerId, placement }) {
+  const player = players[playerId];
+  const isHuman = player?.type === "human";
+  const ordinal = placement === 1 ? "first" : "second";
+
+  updatePlayerBar(playerId);
+
+  if (isHuman) {
+    showSetupModal(`It's your turn to place your ${ordinal} settlement and road.`, { loading: false });
+    await delay(400);
+  } else {
+    showSetupModal(`${player?.name || "Computer"} is thinking…`, { loading: true });
+    await delay(SETUP_THINK_TIME_MS);
+  }
+
+  recordSetupPlacement(playerId, placement);
+  logEvent(`${player?.name || playerId} placed their ${ordinal} settlement and road.`);
+}
+
+function recordSetupPlacement(playerId, placementNumber) {
+  const player = players[playerId];
+  if (!player) return;
+
+  const settlementId = `setup_settlement_${placementNumber}_${playerId}`;
+  const roadId = `setup_road_${placementNumber}_${playerId}`;
+
+  if (!player.buildings.settlements.find(s => s.id === settlementId)) {
+    player.buildings.settlements.push({ id: settlementId, phase: "setup" });
+  }
+
+  if (!player.buildings.roads.find(r => r.id === roadId)) {
+    player.buildings.roads.push({ id: roadId, phase: "setup" });
+  }
+}
+
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function prepareSetupModal() {
+  const modal = document.getElementById("setup-modal");
+  if (!modal) return;
+
+  modal.classList.add("is-visible");
+}
+
+function showSetupModal(message, { loading = false } = {}) {
+  const modal = document.getElementById("setup-modal");
+  const messageEl = document.getElementById("setup-modal-message");
+  const spinner = document.getElementById("setup-modal-spinner");
+
+  if (!modal || !messageEl || !spinner) return;
+
+  messageEl.textContent = message;
+  modal.classList.add("is-visible");
+  spinner.classList.toggle("is-hidden", !loading);
+}
+
+function hideSetupModal() {
+  const modal = document.getElementById("setup-modal");
+  if (!modal) return;
+
+  modal.classList.remove("is-visible");
 }

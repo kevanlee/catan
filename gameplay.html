@@ -11,6 +11,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&display=swap" rel="stylesheet">
 </head>
 <body>
+<div id="setup-modal" class="setup-modal">
+  <div class="setup-modal__content">
+    <div id="setup-modal-spinner" class="setup-modal__spinner" aria-hidden="true"></div>
+    <p id="setup-modal-message" class="setup-modal__message">Setting up the game board…</p>
+  </div>
+</div>
 <div id="wrapper">
 <header id="top-rows">
   <div class="main-nav">
@@ -159,7 +165,7 @@
       </div>
     </div>
 
-    <div class="window floating-window" id="dice-window" data-window-title="Dice" style="bottom: 360px; right: 30px;">
+    <div class="window floating-window" id="dice-window" data-window-title="Dice" data-start-minimized="true" style="bottom: 360px; right: 30px;">
       <div class="window-titlebar">
         <span>Dice Roll</span>
         <button class="window-control" data-action="minimize">_</button>
@@ -180,7 +186,7 @@
       </div>
     </div>
 
-    <div class="window floating-window" id="game-log" data-window-title="Game Log" style="bottom: 80px; right: 30px; width: 420px;">
+    <div class="window floating-window" id="game-log" data-window-title="Game Log" data-start-minimized="true" style="bottom: 80px; right: 30px; width: 420px;">
       <div class="window-titlebar">
         <span>Game Log</span>
         <button class="window-control" data-action="minimize">_</button>

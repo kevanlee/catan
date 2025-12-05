@@ -4,7 +4,7 @@ function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
 }
 
-export function initFloatingWindows() {
+export function initFloatingWindows({ startMinimized = false } = {}) {
   const windows = document.querySelectorAll(".floating-window");
   const dock = document.getElementById("window-dock");
 
@@ -22,7 +22,7 @@ export function initFloatingWindows() {
 
     win.addEventListener("mousedown", () => setActiveWindow(win, windows));
 
-    if (win.dataset.startMinimized === "true") {
+    if (startMinimized || win.dataset.startMinimized === "true") {
       minimizeWindow(win, dock);
     }
   });
@@ -46,10 +46,12 @@ function enableDragging(win, handle, windows) {
 
   function onMouseMove(event) {
     if (!isDragging) return;
-    const viewportWidth = document.documentElement.clientWidth;
-    const viewportHeight = document.documentElement.clientHeight;
+    const viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    const bottomBuffer = 90; // keep windows out of the fixed dock/taskbar area
     const newLeft = clamp(event.clientX - offsetX, 0, viewportWidth - win.offsetWidth);
-    const newTop = clamp(event.clientY - offsetY, 0, viewportHeight - win.offsetHeight);
+    const maxTop = Math.max(viewportHeight - win.offsetHeight - bottomBuffer, 0);
+    const newTop = clamp(event.clientY - offsetY, 0, maxTop);
     win.style.left = `${newLeft}px`;
     win.style.top = `${newTop}px`;
   }
