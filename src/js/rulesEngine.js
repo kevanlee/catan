@@ -1,15 +1,16 @@
 // src/js/rulesEngine.js
 
+import { catanRules } from "./rules/catanRules.js";
+
 /**
- * This will eventually contain your full rules logic.
+ * Central place to expose game rules and rule helpers.
  */
 export const rules = {
+  summary: catanRules,
+
   initialize() {
     console.log("rules.initialize() called");
-    // In the future:
-    // - setup rule checks
-    // - preload adjacency
-    // - preload resource payout logic
+    return catanRules;
   },
 
   canBuildRoad() {
